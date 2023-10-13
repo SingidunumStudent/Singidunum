@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-01</title>
+
+    <script>
+        /* 
+        1. example
+
+        ECMA script
+        */
+
+        var colors = ["red", "green", "blue"];
+
+        for (var i = 0; i < colors.length; i++) {
+            console.log(colors[i]);
+        }
+        console.log("----------------------------");
+        /* ecma */
+        colors.forEach(function (color) {
+            console.log(color)
+        })
+        console.log("-------------- NEXT EXAMPLE ------------");
+
+        /* 
+        2nd example
+        */
+
+        var numbers = [1, 2, 3, 4, 5];
+        var sum = 0;
+
+        numbers.forEach(function (number) {
+            sum += number;
+        });
+
+        sum;
+        console.log(sum);
+        console.log("-------------- NEXT EXAMPLE ------------");
+
+        /* 
+            3rd example
+            map()
+        */
+
+        var numbers = [1, 2, 3];
+        var dn = [];
+
+        for (var i = 0; i < numbers.length; i++) {
+            dn.push(numbers[i] * 2);
+        }
+
+        console.log(numbers);
+        console.log(dn);
+
+        console.log("----------------------------")
+
+        var dnaf = numbers.map(function (number) {
+            return number * 2;
+        });
+        console.log(numbers);
+        console.log(dnaf);
+
+        console.log("-------------- NEXT EXAMPLE ------------");
+
+        var cars = [
+            { model: "yugo", price: "expensive", rating: 10 },
+            { model: "lada", price: "expensive", rating: 10 },
+            { model: "bmw", price: "cheap", rating: 1 }
+        ];
+
+        var prices = cars.map(function (car) {
+            return car.rating;
+        });
+
+        console.log(prices);
+        console.log("-------------- NEXT EXAMPLE ------------");
+
+        /* 
+        method(params){
+            to do...
+        };
+        */
+
+        /* 
+            4. 
+            push() and filter()
+        */
+
+        var articles = [
+            { name: 'nvidia', type: 'gpu' },
+            { name: 'ssd', type: 'hard disk' },
+            { name: 'intel', type: 'cpu' },
+            { name: 'nvme', type: 'hard disk' }
+        ];
+
+        var filterArticles = [];
+
+        for (var i = 0; i < articles.length; i++) {
+            if (articles[i].type === 'hard disk') {
+                filterArticles.push(articles[i]);
+            }
+        }
+
+        console.log(filterArticles);
+        console.log("----------------------------")
+
+        let filters = articles.filter(function (article) {
+            return article.type === 'hard disk';
+        });
+
+        console.log(filters);
+
+        /* 
+            5.
+            filter()
+        */
+
+        var articles = [
+            { name: 'nvidia', type: 'gpu', q: 1, price: 2 },
+            { name: 'ssd', type: 'hard disk', q: 10, price: 25 },
+            { name: 'intel', type: 'cpu', q: 20, price: 14 },
+            { name: 'nvme', type: 'hard disk', q: 5, price: 3 }
+        ];
+
+        /* 
+        type: hard disk
+        price < 20
+        q > 5
+        */
+
+        let filters2 = articles.filter(function (article) {
+            return article.type === 'hard disk'
+                && article.q > 5
+                && article.price < 26
+        });
+
+        console.log(filters2);
+        console.log("-------------- NEXT EXAMPLE: comments section ------------");
+        /* 
+            6
+            filter()
+        */
+
+        var topic = { id: 2224, heading: 'Sport news' };
+
+        var comments = [
+            { topicId: 2224, content: 'great news!' },
+            { topicId: 1113, content: 'bad news!' },
+            { topicId: 2224, content: 'good news!' },
+            { topicId: 4444, content: 'ok!' }
+        ];
+
+        function commentSection(topic, comments) {
+            return comments.filter(function (comment) {
+                return comment.topicId === topic.id;
+            })
+        }
+
+        let printComments = commentSection(topic, comments);
+        console.log(printComments);
+        console.log("-------------- NEXT EXAMPLE ------------");
+
+
+        /* 
+            7.
+            find()
+        */
+
+        var users = [
+            { name: 'Nikola', id: 0 },
+            { name: 'Marko' },
+            { name: 'Lazar' },
+            { name: 'Nikola', id: 3 }
+        ];
+
+        /* var user;
+
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].name === 'Nikola') {
+                user = users[i];
+                break;
+            }
+        }
+
+        let printUser = user; 
+        console.log(printUser);*/
+
+        let printUser = users.find(function(user){
+            return user.name === 'Nikola';
+        });
+
+        console.log(printUser);
+
+        function Car(model){
+            this.model = model;
+        }
+
+        var cars = [
+            new Car("Yugo"),
+            new Car("Lada"),
+            new Car("Tesla"),
+        ];
+
+
+        let printCars = cars.find(function(car){
+            return car.model === "Yugo";
+        });
+
+        var naems = [
+            "Ana", "Nikola", "Dusan"
+        ];
+
+        let printNames = names.every(function(name){
+            return name.length > 4;
+        });
+
+        console.log(printNames);
+
+        let printNames2 = names.some(function(name){
+            return name.length > 4;
+        });
+
+        console.log(printNames2);
+
+        var someNumbers = [4, 5, 10];
+        var sum = 0;
+
+        for(var i = 0; i < someNumbers.length; i++) {
+            sum += someNumbers[i];
+        }
+
+        console.log(sum);
+
+        let printNumbers = someNumbers.reduce(function(sum, number){
+            return sum + number;
+        }, 0)
+
+        console.log(printNumbers);
+
+        var primaryColors = [
+            { color: "red" },
+            { color: "green" },
+            { color: "blue" },
+        ];
+
+        let pc = primaryColors.reduce(function(acc, primaryColor){
+            acc.push(primaryColor.color);
+
+            return acc;
+        }, []);
+
+        console.log(pc);
+
+        function yearIs() {
+            const year = new Date().getFullYear();
+
+            //return "Year is: " + year;
+
+            //return `Year = ${year}`;
+
+            return `Year = ${new Date().getFullYear()}`;
+        } 
+
+        console.log(yearIs());
+
+        const add = function(a,b){
+            return a + b;
+        }
+
+        let sum = add(1, 2);
+        console.log(sum1)
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
